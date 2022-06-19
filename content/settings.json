@@ -1,0 +1,10 @@
+{
+  "title": "CrossCopy Documentation",
+  "url": "doc.crosscopy.io",
+  "logo": {
+    "light": "/logo-light.svg",
+    "dark": "/logo-dark.svg"
+  },
+  "github": "CrossCopy/crosscopy-doc",
+  "twitter": "@crosscopyio"
+}
