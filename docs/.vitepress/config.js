@@ -4,7 +4,7 @@ export default {
   themeConfig: {
     editLink: {
       pattern:
-        "https://github.com/CrossCopy/crosscopy-doc/edit/main/docs/:path",
+        "https://github.com/CrossCopy/crosscopy-doc/edit/develop/docs/:path",
     },
     socialLinks: [
       { icon: "github", link: "https://github.com/CrossCopy/crosscopy-doc" },
