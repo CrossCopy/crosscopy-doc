@@ -3,7 +3,8 @@ export default {
   description: "CrossCopy Documentation",
   themeConfig: {
     editLink: {
-      pattern: 'https://github.com/CrossCopy/crosscopy-doc/edit/main/docs/:path'
+      pattern:
+        "https://github.com/CrossCopy/crosscopy-doc/edit/main/docs/:path",
     },
     socialLinks: [
       { icon: "github", link: "https://github.com/CrossCopy/crosscopy-doc" },
@@ -19,6 +20,10 @@ export default {
           ],
         },
       ],
+    },
+    footer: {
+      message: "Released under the MIT License.",
+      copyright: "Copyright © 2022-present Huakun Shen",
     },
   },
 };
