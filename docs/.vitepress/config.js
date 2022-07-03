@@ -10,6 +10,9 @@ export default {
       { icon: "github", link: "https://github.com/CrossCopy/crosscopy-doc" },
       { icon: "twitter", link: "https://twitter.com/crosscopyio" },
     ],
+    nav: [
+      { text: 'Our Team', link: '/team' },
+    ],
     sidebar: {
       "/introduction/": [
         {
