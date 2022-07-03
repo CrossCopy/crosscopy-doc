@@ -17,7 +17,6 @@ const members = [
     title: 'Member',
     links: [
       { icon: 'github', link: 'https://github.com/JackyKLai' },
-      { icon: 'twitter', link: 'https://twitter.com/NA60059044' }
     ]
   }
 ]
