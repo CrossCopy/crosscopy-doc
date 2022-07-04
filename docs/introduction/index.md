@@ -2,14 +2,16 @@
 
 CrossCopy is a cloud based clipboard manager aiming to provide a seamless universal clipboard experience across all of your devices.
 
-Unlike other cloud based clipboard managers, you don't need to manually copy and paste content into an app, instead, everything is done for you in the background.
-The experience will be seamless, you won't even recognize your clipboard on 2 devices are isolated. i.e. after `Ctrl + C` on one device, you can `Ctrl + V` on the other device immediately.
+Unlike other cloud-based clipboard managers, you don't need to manually copy and paste content into an app. Instead, everything is done for you in the background.
+The experience will be seamless, you won't even realize that your clipboard on 2 devices are isolated. 
+
+i.e. after `Ctrl + C` on one device, you can `Ctrl + V` on the other device immediately.
 
 It's kind of like Apple's handoff, but available on all platforms and will be open sourced.
 
 This project will be open sourced, [GitHub Repos](https://github.com/CrossCopy) will be public once it's ready to be used.
 
-This documentation will contain instructions to install and use the project. Any advices are welcomed, leave an issue in the corresponding repo or [send an email](mailto:huakun.shen@crosscopy.io) to the author.
+This documentation will contain instructions to install and use the app. Any advices are welcome, leave an issue in the corresponding repo or [send an email to the author](mailto:huakun.shen@crosscopy.io).
 
 See [roadmap](./roadmap) for the latest version you can use.
 
