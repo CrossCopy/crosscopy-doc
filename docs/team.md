@@ -13,7 +13,7 @@ const members = [
   },
   {
     avatar: 'https://www.github.com/JackyKLai.png',
-    name: 'Huakun Shen',
+    name: 'Jacky Lai',
     title: 'Member',
     links: [
       { icon: 'github', link: 'https://github.com/JackyKLai' },
