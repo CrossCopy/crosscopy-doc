@@ -11,7 +11,8 @@ export default {
       { icon: "twitter", link: "https://twitter.com/crosscopyio" },
     ],
     nav: [
-      { text: 'Our Team', link: '/team' },
+      { text: "Our Team", link: "/team" },
+      { text: "Contact", link: "mailto:huakun.shen@crosscopy.io" },
     ],
     sidebar: {
       "/introduction/": [
@@ -19,6 +20,7 @@ export default {
           text: "Introduction",
           items: [
             { text: "Introduction", link: "/introduction/index" },
+            { text: "Roadmap", link: "/introduction/roadmap" },
             { text: "Getting Started", link: "/introduction/getting-started" },
           ],
         },
