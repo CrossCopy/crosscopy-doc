@@ -1,41 +1,9 @@
-# Website
+# CrossCopy Documentation
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+<p align="left">
+  <a href="https://app.netlify.com/sites/crosscopy-doc/deploys"><img src="https://api.netlify.com/api/v1/badges/eb76a12a-54b4-46b1-91a0-997ceea06ab6/deploy-status" align="right" alt="Twitter Follow" /></a>
+  <a href="https://gitpod.io/#https://github.com/CrossCopy/crosscopy-doc"><img src="https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod" alt="Gitpod Ready-to-Code"/></a>
 
-### Installation
+<a href="https://twitter.com/crosscopyio"><img src="https://img.shields.io/twitter/follow/crosscopy.svg?style=social" align="right" alt="Twitter Follow" /></a>
 
-```
-$ yarn
-```
-
-### Local Development
-
-```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+</p>

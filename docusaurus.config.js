@@ -1,53 +1,52 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require("prism-react-renderer/themes/github");
+const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'CrossCopy',
-  tagline: 'Cross-platform clipboard manager',
-  url: 'https://crosscopy.io',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  title: "CrossCopy",
+  tagline: "Cross-platform clipboard manager",
+  url: "https://crosscopy.io",
+  baseUrl: "/",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  favicon: "img/favicon.ico",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'CrossCopy', // Usually your GitHub org/user name.
-  projectName: 'CrossCopy', // Usually your repo name.
+  organizationName: "CrossCopy", // Usually your GitHub org/user name.
+  projectName: "CrossCopy", // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
   presets: [
     [
-      'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
+      "classic",
+      // /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/CrossCopy/crosscopy-doc/edit/develop/',
+          editUrl: "https://github.com/CrossCopy/crosscopy-doc/edit/develop/",
+          remarkPlugins: [require("mdx-mermaid")],
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/CrossCopy/crosscopy-doc/edit/develop/',
+          editUrl: "https://github.com/CrossCopy/crosscopy-doc/edit/develop/",
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
       }),
     ],
@@ -57,45 +56,45 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'CrossCopy',
+        title: "CrossCopy",
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: "My Site Logo",
+          src: "img/logo.svg",
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
-            position: 'left',
-            label: 'Docs',
+            type: "doc",
+            docId: "intro",
+            position: "left",
+            label: "Docs",
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          { to: "/blog", label: "Blog", position: "left" },
           {
-            href: 'https://github.com/CrossCopy/crosscopy-doc',
-            label: 'GitHub',
-            position: 'right',
+            href: "https://github.com/CrossCopy/crosscopy-doc",
+            label: "GitHub",
+            position: "right",
           },
           {
-            href: 'https://twitter.com/crosscopyio',
-            label: 'Twitter',
-            position: 'right',
+            href: "https://twitter.com/crosscopyio",
+            label: "Twitter",
+            position: "right",
           },
         ],
       },
       footer: {
-        style: 'dark',
+        style: "dark",
         links: [
           {
-            title: 'Docs',
+            title: "Docs",
             items: [
               {
-                label: 'Intro',
-                to: '/docs/intro',
+                label: "Intro",
+                to: "/docs/intro",
               },
             ],
           },
           {
-            title: 'Community',
+            title: "Community",
             items: [
               // {
               //   label: 'Stack Overflow',
@@ -106,21 +105,29 @@ const config = {
               //   href: 'https://discordapp.com/invite/docusaurus',
               // },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/crosscopyio',
+                label: "Twitter",
+                href: "https://twitter.com/crosscopyio",
               },
             ],
           },
           {
-            title: 'More',
+            title: "More",
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: "Blog",
+                to: "/blog",
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/CrossCopy/crosscopy-doc',
+                label: "GitHub",
+                href: "https://github.com/CrossCopy/crosscopy-doc",
+              },
+              {
+                label: "Author",
+                href: "https://huakunshen.com",
+              },
+              {
+                label: "Contact Author",
+                href: "mailto:huakun.shen@crosscopy.io",
               },
             ],
           },
