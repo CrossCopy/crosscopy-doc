@@ -37,7 +37,7 @@
   opacity: 0.6;
 }
 
-.header-github-link:before {
+.header-github-link::before {
   background: url("../../static/img/github-icon.svg") no-repeat;
   content: "";
   display: flex;
@@ -48,7 +48,7 @@
   filter: invert(var(--icon-invert));
 }
 
-.header-github-link:before[data-theme="dark"] {
+.header-github-link::before[data-theme="dark"] {
   filter: invert(var(--icon-invert));
 }
 
@@ -57,7 +57,7 @@
   opacity: 0.6;
 }
 
-.header-discord-link:before {
+.header-discord-link::before {
   background: url("../../static/img/discord-icon.svg") no-repeat;
   content: "";
   display: flex;
@@ -69,7 +69,7 @@
   transform: translateY(2px);
 }
 
-.header-discord-link:before[data-theme="dark"] {
+.header-discord-link::before[data-theme="dark"] {
   filter: invert(var(--icon-invert));
 }
 
@@ -78,7 +78,7 @@
   opacity: 0.6;
 }
 
-.header-twitter-link:before {
+.header-twitter-link::before {
   background: url("../../static/img/twitter-icon.svg") no-repeat;
   content: "";
   display: flex;
@@ -89,6 +89,6 @@
   filter: invert(var(--icon-invert));
 }
 
-.header-twitter-link:before[data-theme="dark"] {
+.header-twitter-link::before[data-theme="dark"] {
   filter: invert(var(--icon-invert));
 }
