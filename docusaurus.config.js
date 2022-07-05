@@ -31,7 +31,7 @@ const config = {
     [
       "classic",
       // /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
@@ -44,11 +44,12 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/CrossCopy/crosscopy-doc/edit/develop/",
+          remarkPlugins: [require("mdx-mermaid")],
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-      }),
+      },
     ],
   ],
 
@@ -71,12 +72,18 @@ const config = {
           { to: "/blog", label: "Blog", position: "left" },
           {
             href: "https://github.com/CrossCopy/crosscopy-doc",
-            label: "GitHub",
             position: "right",
+            className: "header-github-link",
+            "aria-label": "GitHub repository",
           },
           {
             href: "https://twitter.com/crosscopyio",
-            label: "Twitter",
+            className: "header-twitter-link",
+            position: "right",
+          },
+          {
+            href: "https://discord.gg/HRW99gex9z",
+            className: "header-discord-link",
             position: "right",
           },
         ],
@@ -91,6 +98,10 @@ const config = {
                 label: "Intro",
                 to: "/docs/intro",
               },
+              {
+                label: "Blog",
+                to: "/blog",
+              },
             ],
           },
           {
@@ -100,27 +111,23 @@ const config = {
               //   label: 'Stack Overflow',
               //   href: 'https://stackoverflow.com/questions/tagged/docusaurus',
               // },
-              // {
-              //   label: 'Discord',
-              //   href: 'https://discordapp.com/invite/docusaurus',
-              // },
+              {
+                label: "Discord",
+                href: "https://discord.gg/HRW99gex9z",
+              },
               {
                 label: "Twitter",
                 href: "https://twitter.com/crosscopyio",
+              },
+              {
+                label: "GitHub",
+                href: "https://github.com/CrossCopy/crosscopy-doc",
               },
             ],
           },
           {
             title: "More",
             items: [
-              {
-                label: "Blog",
-                to: "/blog",
-              },
-              {
-                label: "GitHub",
-                href: "https://github.com/CrossCopy/crosscopy-doc",
-              },
               {
                 label: "Author",
                 href: "https://huakunshen.com",

@@ -17,11 +17,11 @@
   --ifm-color-primary-light: #134990;
   --ifm-color-primary-lighter: #144c97;
   --ifm-color-primary-lightest: #1656aa;
-
+  --icon-invert: 0;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
+[data-theme="dark"] {
   --ifm-color-primary: #25afc1;
   --ifm-color-primary-dark: #219eae;
   --ifm-color-primary-darker: #1f95a4;
@@ -29,4 +29,66 @@
   --ifm-color-primary-light: #29c1d4;
   --ifm-color-primary-lighter: #31c4d8;
   --ifm-color-primary-lightest: #4ecddd;
+  --icon-invert: 1;
+}
+
+/* Icons */
+.header-github-link:hover {
+  opacity: 0.6;
+}
+
+.header-github-link:before {
+  background: url("../../static/img/github-icon.svg") no-repeat;
+  content: "";
+  display: flex;
+  height: 24px;
+  width: 24px;
+  /* background-color: yellow; */
+  color: white;
+  filter: invert(var(--icon-invert));
+}
+
+.header-github-link:before[data-theme="dark"] {
+  filter: invert(var(--icon-invert));
+}
+
+
+.header-discord-link:hover {
+  opacity: 0.6;
+}
+
+.header-discord-link:before {
+  background: url("../../static/img/discord-icon.svg") no-repeat;
+  content: "";
+  display: flex;
+  height: 24px;
+  width: 24px;
+  /* background-color: yellow; */
+  color: white;
+  filter: invert(var(--icon-invert));
+  transform: translateY(2px);
+}
+
+.header-discord-link:before[data-theme="dark"] {
+  filter: invert(var(--icon-invert));
+}
+
+
+.header-twitter-link:hover {
+  opacity: 0.6;
+}
+
+.header-twitter-link:before {
+  background: url("../../static/img/twitter-icon.svg") no-repeat;
+  content: "";
+  display: flex;
+  height: 24px;
+  width: 24px;
+  /* background-color: yellow; */
+  color: white;
+  filter: invert(var(--icon-invert));
+}
+
+.header-twitter-link:before[data-theme="dark"] {
+  filter: invert(var(--icon-invert));
 }
