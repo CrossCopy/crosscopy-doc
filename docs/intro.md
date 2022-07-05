@@ -2,46 +2,47 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Introduction
 
-Let's discover **Docusaurus in less than 5 minutes**.
+CrossCopy is a cloud based clipboard manager aiming to provide a seamless universal clipboard experience across all of your devices.
 
-## Getting Started
+Unlike other cloud-based clipboard managers, you don't need to manually copy and paste content into an app. Instead, everything is done for you in the background.
+The experience will be seamless, you won't even realize that your clipboard on 2 devices are isolated. 
 
-Get started by **creating a new site**.
+i.e. after `Ctrl + C` on one device, you can `Ctrl + V` on the other device immediately.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+It's kind of like Apple's handoff, but available on all platforms and will be open sourced.
 
-### What you'll need
+This project will be open sourced, [GitHub Repos](https://github.com/CrossCopy) will be public once it's ready to be used.
 
-- [Node.js](https://nodejs.org/en/download/) version 14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+This documentation will contain instructions to install and use the app. Any advices are welcome, leave an issue in the corresponding repo or [send an email to the author](mailto:huakun.shen@crosscopy.io).
 
-## Generate a new site
+See [roadmap](./roadmap) for the latest version you can use.
 
-Generate a new Docusaurus site using the **classic template**.
+## Supported Platforms
 
-The classic template will automatically be added to your project after you run the command:
+| Platform                      | Development Progress |
+| ----------------------------- | -------------------- |
+| CLI (Windows / MacOS / Linux) | In Progress          |
+| Web                           | In Progress          |
+| MacOS                         | Planning             |
+| Windows                       | Planning             |
+| Linux                         | Planning             |
+| ChromeOS                      | Planning             |
+| IOS                           | Planning             |
+| Android                       | Planning             |
+| HarmonyOS                     | Planning             |
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+## Planned Features
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+| Feature                 | Support | Comment                                                                                                                                                                                                             |
+| ----------------------- | :-----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Clipboard Text Syncing  |   ✅    |                                                                                                                                                                                                                     |
+| Clipboard Image Syncing |   ❌    | Planned to be supported in the future, will be developed once desktop client is supported.                                                                                                                          |
+| Client-Side Encryption  |   ✅    | All clipboard data are encrypted on client side. Even database manager won't be able to view your data.                                                                                                             |
+| Offline Mode            |   ✅    | Clipboard History recording will be available when no internet is available, and will be synced once connected to internet. It can also work completely offline as a clipboard history app without syncing feature. |
+| Realtime Syncing        |   ✅    | While connected to internet, data is synced to other devices in realtime.                                                                                                                                           |
+| Clipboard History       |   ✅    |                                                                                                                                                                                                                     |
+| Self Deployment         |   ✅    | You can deploy on your own server for better security, while there is already client-side encryption out of the box.                                                                                                |
+| Cloud Support           |   ✅    | SaaS                                                                                                                                                                                                                |
+| External Plugin         |   ✅    | You can use plugins to preprocess data to be synced. e.g. implement your own encryption, upload your data to databases/notion, filter keywords (do not upload bank card number)                                     |
