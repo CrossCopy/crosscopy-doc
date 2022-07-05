@@ -53,10 +53,7 @@ sequenceDiagram
     Note left of Client: Update local storage and UI<br>1. Add database id to local records identified with uuid<br>2. Add new records to local storage (sort by created time)
 ```
 
-
-
 ## Conclusion
-
 
 I will pick Design 3.
 
@@ -68,17 +65,11 @@ Design 3 requires implementing an extra GraphQL request, but it's only 1 request
 
 Design 3 is a more atomic and is worth the effort.
 
-I can still make a wrapper helper for Design 1. 
-
-
+I can still make a wrapper helper for Design 1.
 
 A periodic syncing should be run to prevent any errors. Period: 5 minutes.
 
-
-
 # SocketIO Syncing Design
-
-
 
 ```mermaid
 sequenceDiagram
@@ -93,27 +84,8 @@ sequenceDiagram
     end
 ```
 
-
-
-
-
 Version 1 assumes that the app will only work when connected to server. UI is updated after server responds.
 
 The new design requires client app to work offline. The design will be similar to the regular request design above, except that this will have a long connection.
 
 A periodic syncing should be run to prevent any errors. Period: ~5 minutes.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
