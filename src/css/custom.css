@@ -33,7 +33,7 @@
 }
 
 /* Icons */
-.header-github-link::hover {
+.header-github-link:hover {
   opacity: 0.6;
 }
 
@@ -47,7 +47,7 @@
   filter: invert(var(--icon-invert));
 }
 
-.header-discord-link::hover {
+.header-discord-link:hover {
   opacity: 0.6;
 }
 
@@ -62,7 +62,7 @@
   transform: translateY(2px);
 }
 
-.header-twitter-link::hover {
+.header-twitter-link:hover {
   opacity: 0.6;
 }
 
