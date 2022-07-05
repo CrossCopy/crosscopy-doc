@@ -1,8 +1,5 @@
 ---
-title: Sync Design
-description: "Design Syncing Algorithm"
-position: 2
-category: Design
+title: Sync
 ---
 
 # GraphQL Syncing Candidate Designs

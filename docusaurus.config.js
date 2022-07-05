@@ -57,7 +57,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title: 'CrossCopy',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
@@ -67,12 +67,17 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Docs',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/CrossCopy/crosscopy-doc',
             label: 'GitHub',
+            position: 'right',
+          },
+          {
+            href: 'https://twitter.com/crosscopyio',
+            label: 'Twitter',
             position: 'right',
           },
         ],
@@ -84,7 +89,7 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Intro',
                 to: '/docs/intro',
               },
             ],
