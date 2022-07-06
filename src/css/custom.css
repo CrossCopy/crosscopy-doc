@@ -22,16 +22,25 @@
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
-  --ifm-color-primary: #25afc1;
+  /* --ifm-color-primary: #25afc1;
   --ifm-color-primary-dark: #219eae;
   --ifm-color-primary-darker: #1f95a4;
   --ifm-color-primary-darkest: #1a7b87;
   --ifm-color-primary-light: #29c1d4;
   --ifm-color-primary-lighter: #31c4d8;
-  --ifm-color-primary-lightest: #4ecddd;
+  --ifm-color-primary-lightest: #4ecddd; */
+  --ifm-color-primary: #81ecec;
+  --ifm-color-primary-dark: #61e7e7;
+  --ifm-color-primary-darker: #51e5e5;
+  --ifm-color-primary-darkest: #22dede;
+  --ifm-color-primary-light: #a1f1f1;
+  --ifm-color-primary-lighter: #b1f3f3;
+  --ifm-color-primary-lightest: #e0fafa;
+
   --icon-invert: 1;
 }
 
+THis           
 /* Icons */
 .header-github-link:hover {
   opacity: 0.6;
