@@ -104,6 +104,8 @@ services:
 
 [RedisInsight](https://redis.com/redis-enterprise/redis-insight/) is a GUI client you can use to debug.
 
+`rejson` image is used for json support.
+
 ### Kafka
 
 Kafka is used to communicate between services. For example, it's used for email ownership verification.
