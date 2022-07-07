@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # Design
 
 CrossCopy Technical Design.
@@ -9,4 +13,5 @@ graph TD
     Server --> Windows
     Server --> CLI
     Server --> Web
+    Server --> Mobile-Devices
 ```

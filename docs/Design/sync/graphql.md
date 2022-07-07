@@ -1,5 +1,6 @@
 ---
-title: Sync
+title: GraphQL Sync API
+sidebar_position: 3
 ---
 
 # GraphQL Syncing Candidate Designs

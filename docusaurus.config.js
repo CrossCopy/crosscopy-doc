@@ -5,6 +5,8 @@ const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const math = require('remark-math');
 const katex = require('rehype-katex');
+const mathjax = require('rehype-mathjax');
+const sectionPrefix = require('./src/remark/section-prefix');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -39,7 +41,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/CrossCopy/crosscopy-doc/edit/develop/",
-          remarkPlugins: [require("mdx-mermaid"), math],
+          remarkPlugins: [require("mdx-mermaid"), math, sectionPrefix],
           rehypePlugins: [katex],
         },
         blog: {
@@ -70,6 +72,9 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {name: 'keywords', content: 'crosscopy, clipboard, cloud, cross-platform, sync, realtime, open source, free'}
+      ],
       navbar: {
         title: "CrossCopy",
         logo: {

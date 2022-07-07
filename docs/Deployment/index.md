@@ -1,5 +1,6 @@
 ---
 title: Deployment
+sidebar_position: 6
 ---
 
 For users that don't want to deploy CrossCopy on their own, we provide a cloud service. All downloaded client apps by default use our service.

@@ -6,3 +6,13 @@ tags: [huakun]
 ---
 
 I made CrossCopy to solve my own problem, hopefully it will be useful to you.
+
+
+$\frac{1}{2}$
+
+$$\frac{1}{2}$$
+
+
+$$
+\frac{1}{2}
+$$

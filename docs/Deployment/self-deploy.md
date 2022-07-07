@@ -128,7 +128,7 @@ Run `docker compose up` within `CrossCopy/Backend` repo which contains some depe
 
 `notification` service is a python service I wrote to send notifications to users. For example, email verification is provided by this services.
 
-To support transaction operations in database, MongoDB has to be a replica set. Run `docker compose exec mongo mongo --eval "rs.initiate({_id: 'rs0', members: [{_id: 0, host: 'localhost:27017'}]});"\n` after all services are up and running.
+To support transaction operations in database, MongoDB has to be a replica set. Run `docker compose exec mongo mongo --eval "rs.initiate({_id: 'rs0', members: [{_id: 0, host: 'localhost:27017'}]});"` after all services are up and running.
 
 For more details, see the following issues:
 - https://github.com/prisma/docs/issues/2795
