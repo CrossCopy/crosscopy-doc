@@ -55,12 +55,14 @@ version: "3.9"
 
 services:
   mongo:
-    container_name: mongo
-    image: mongo:5
-    command: --replSet rs0
+    build: ../mongodb_replica
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: crosscopy
+      MONGO_REPLICA_HOST: localhost
+      MONGO_REPLICA_PORT: 27017
     ports:
       - "27017:27017"
-      - "28017:28017"
   mongo-express:
     image: mongo-express
     container_name: crosscopy-mongo-express
@@ -70,12 +72,31 @@ services:
     ports:
       - 8081:8081
     environment:
-      ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
-    networks:
-      - crosscopy
+      ME_CONFIG_MONGODB_URL: mongodb://root:crosscopy@mongo:27017/
 ```
 
-Then run `docker compose exec mongo mongo --eval "rs.initiate({_id: 'rs0', members: [{_id: 0, host: 'localhost:27017'}]});"`.
+The `mongo` service is built from a `Dockerfile`.
+
+<details>
+<summary>../mongodb_replica/Dockerfile</summary>
+
+The `Dockerfile` is taken from Prisma https://github.com/prisma/prisma/blob/main/docker/mongodb_replica/Dockerfile
+
+```Dockerfile
+FROM mongo:4
+
+# we take over the default & start mongo in replica set mode in a background task
+ENTRYPOINT mongod --port $MONGO_REPLICA_PORT --replSet rs0 --bind_ip 0.0.0.0 & MONGOD_PID=$!; \
+# we prepare the replica set with a single node and prepare the root user config
+INIT_REPL_CMD="rs.initiate({ _id: 'rs0', members: [{ _id: 0, host: '$MONGO_REPLICA_HOST:$MONGO_REPLICA_PORT' }] })"; \
+INIT_USER_CMD="db.createUser({ user: '$MONGO_INITDB_ROOT_USERNAME', pwd: '$MONGO_INITDB_ROOT_PASSWORD', roles: [ 'root' ] })"; \
+# we wait for the replica set to be ready and then submit the commands just above
+until (mongo admin --port $MONGO_REPLICA_PORT --eval "$INIT_REPL_CMD && $INIT_USER_CMD"); do sleep 1; done; \
+# we are done but we keep the container by waiting on signals from the mongo task
+echo "REPLICA SET ONLINE"; wait $MONGOD_PID;
+```
+
+</details>
 
 Mongo Express is a web interface allowing you to interact with your database. I personally also use mongodb compass, this service is not necessary.
 
@@ -98,11 +119,11 @@ services:
     restart: unless-stopped
     ports:
       - 6379:6379
-    volumes:
-      - ./server-nodejs/src/database/initdb.d/redis.conf:/usr/local/etc/redis/redis.conf
 ```
 
 [RedisInsight](https://redis.com/redis-enterprise/redis-insight/) is a GUI client you can use to debug.
+
+Connect with no password.
 
 ### Kafka
 
@@ -152,21 +173,39 @@ services:
 
 See [Overview of UI Monitoring Tools for Apache Kafka Clusters](https://towardsdatascience.com/overview-of-ui-monitoring-tools-for-apache-kafka-clusters-9ca516c165bd) for more Kafka Visualization Tools.
 
+:::note
+Replace `192.168.2.15` with your own IP address, such as localhost if you run it in localhost and wish to connect from localhost. `192.168.2.15` is the local IP of my home server.
+:::
+
+Try to access the Kafdrop UI at `http://localhost:9005/` to see if Kafka is properly started.
+
 ### Complete `docker-compose.yml`
+
+The `docker-compose` file is from [crosscopy-deploy](https://github.com/CrossCopy/crosscopy-deploy/blob/develop/self-deploy/docker-compose.dev.yml). It depends on some other configuration files using volume. You should run the file here to avoid configuring by yourself.
+
+:::caution
+TODO: Replace `develop` branch with `main` later in the link.
+:::
+
+<details>
+
+<summary>A complete `docker-compose.yml`</summary>
 
 ```yml
 version: "3.9"
 
 services:
   mongo:
-    container_name: mongo
-    image: mongo:5
-    command: --replSet rs0
+    build: ./mongodb_replica
+    container_name: crosscopy-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: prisma
+      MONGO_REPLICA_HOST: localhost
+      MONGO_REPLICA_PORT: 27017
     ports:
       - "27017:27017"
-      - "28017:28017"
-    volumes:
-      - crosscopy/mongo:/data/db
     networks:
       - crosscopy
   mongo-express:
@@ -178,7 +217,7 @@ services:
     ports:
       - 8081:8081
     environment:
-      ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
+      ME_CONFIG_MONGODB_URL: mongodb://root:prisma@mongo:27017/
     networks:
       - crosscopy
   redis:
@@ -188,11 +227,12 @@ services:
     ports:
       - 6379:6379
     volumes:
-      - ./server-nodejs/src/database/initdb.d/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
     networks:
       - crosscopy
   zookeeper:
     image: "bitnami/zookeeper:latest"
+    restart: unless-stopped
     container_name: crosscopy-zookeeper
     ports:
       - "2181:2181"
@@ -213,7 +253,7 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
       - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
-      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://192.168.2.15:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://localhost:9093
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
     depends_on:
       - zookeeper
@@ -224,24 +264,11 @@ services:
     container_name: crosscopy-kafdrop
     restart: unless-stopped
     ports:
-      - 9005:9000
+      - "9005:9000"
     environment:
       - KAFKA_BROKERCONNECT=kafka:9092
     depends_on:
       - kafka
-    networks:
-      - crosscopy
-  notification:
-    image: python:3.9.10-buster
-    container_name: crosscopy-notification
-    restart: unless-stopped
-    depends_on:
-      - kafka
-    volumes:
-      - ./notification:/notification
-    environment:
-      - KAFKA_ADDRESS=kafka:9092
-    entrypoint: /notification/docker-entrypoint.sh
     networks:
       - crosscopy
 
@@ -251,7 +278,10 @@ networks:
 
 volumes:
   crosscopy:
+# docker compose -f ./docker-compose.dev.yml up
 ```
+
+</details>
 
 ## Cloud Service
 

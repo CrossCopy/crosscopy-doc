@@ -3,9 +3,17 @@ title: GraphQL Sync API
 sidebar_position: 3
 ---
 
-# GraphQL Syncing Candidate Designs
+There are multiple ways to sync data, and I design the algorithm with the following components in mind
 
-## Design 1
+- Upload offline (client-side) only data to server
+- Download missing data (not on client-side) data from server
+- Deleted data on server side should be deleted on client-side
+
+## Analysis
+
+## Candidate Designs
+
+### Design 1
 
 ```mermaid
 sequenceDiagram
@@ -26,7 +34,7 @@ sequenceDiagram
 
 Step 2 and 3 can be done in parallel (2 GraphQL mutations at once), no extra route needs to be created.
 
-## Design 2
+### Design 2
 
 ```mermaid
 sequenceDiagram
@@ -38,7 +46,7 @@ sequenceDiagram
     Client->>Server: Upload records not in cloud
 ```
 
-## Design 3
+### Design 3
 
 In client-side local storage, where can store whether a record has been uploaded or not.
 
