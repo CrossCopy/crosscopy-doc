@@ -125,6 +125,8 @@ services:
 
 Connect with no password.
 
+`rejson` image is used for json support.
+
 ### Kafka
 
 Kafka is used to communicate between services. For example, it's used for email ownership verification.
