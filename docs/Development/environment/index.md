@@ -194,7 +194,7 @@ TODO: Replace `develop` branch with `main` later in the link.
 <summary>A complete `docker-compose.yml`</summary>
 
 ```yml
-version: "3.9"
+version: '3.9'
 
 services:
   mongo:
@@ -207,7 +207,7 @@ services:
       MONGO_REPLICA_HOST: localhost
       MONGO_REPLICA_PORT: 27017
     ports:
-      - "27017:27017"
+      - '27017:27017'
     networks:
       - crosscopy
   mongo-express:
@@ -219,7 +219,9 @@ services:
     ports:
       - 8081:8081
     environment:
-      ME_CONFIG_MONGODB_URL: mongodb://root:prisma@mongo:27017/
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: prisma
+      ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
     networks:
       - crosscopy
   redis:
