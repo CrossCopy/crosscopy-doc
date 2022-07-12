@@ -7,12 +7,8 @@ tags: [huakun]
 
 I made CrossCopy to solve my own problem, hopefully it will be useful to you.
 
+Follow Twitter [@crosscopyio](https://twitter.com/crosscopyio).
 
-$\frac{1}{2}$
+Join Discord Server [CrossCopy](https://discord.com/invite/HRW99gex9z).
 
-$$\frac{1}{2}$$
-
-
-$$
-\frac{1}{2}
-$$
+Star GitHub [CrossCopy](https://github.com/CrossCopy).
