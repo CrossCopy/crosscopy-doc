@@ -194,7 +194,7 @@ TODO: Replace `develop` branch with `main` later in the link.
 <summary>A complete `docker-compose.yml`</summary>
 
 ```yml
-version: '3.9'
+version: "3.9"
 
 services:
   mongo:
@@ -207,7 +207,7 @@ services:
       MONGO_REPLICA_HOST: localhost
       MONGO_REPLICA_PORT: 27017
     ports:
-      - '27017:27017'
+      - "27017:27017"
     networks:
       - crosscopy
   mongo-express:
@@ -286,6 +286,36 @@ volumes:
 ```
 
 </details>
+
+### MySQL Database
+
+Below is how I setup a MySQL DB without using docker-compose.
+
+I use the same MySQL instance for multiple projects using different databases for different projects, so I sometimes don't use docker-compose to deplay development DB.
+
+```bash
+docker volume create mysql-data
+docker run -d --name homelab-dev-server -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -v mysql-data:/var/lib/mysql --restart=unless-stopped mysql:latest
+```
+
+```sql
+create database crosscopy_dev;
+
+CREATE USER 'dev'@'%' IDENTIFIED BY 'crosscopy-dev';
+
+GRANT ALL PRIVILEGES ON crosscopy_dev.* TO 'dev'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+```
+
+Prisma `DATABASE_URL` is set with `export DATABASE_URL="mysql://dev:crosscopy-dev@10.6.6.15:3306/crosscopy_dev"`.
+
+```bash
+yarn prisma:generate
+yarn prisma:push
+```
+
+Until here, the tables should be created.
 
 ## Cloud Service
 

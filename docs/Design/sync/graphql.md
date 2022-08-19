@@ -59,6 +59,40 @@ sequenceDiagram
     Note left of Client: Update local storage and UI<br>1. Add database id to local records identified with uuid<br>2. Add new records to local storage (sort by created time)
 ```
 
+### Design 4
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
+    Client ->> Server: Send creation time (C) of latest in-sync local record <br/> and not-in-sync records (R)
+    Server ->> Client: Reply with records created later than (C), <br/> uuids and deletion time of records deleted after (C), <br/> and idMapping of records newly added records
+```
+
+This design uses minimum bandwidth, and made some assumptions.
+
+To get the deletion in sync across all devices, we need to
+
+- Make sure the `deletedAt` attribute is always the deletion time on server (when server receive the delete request), but not the time it gets deleted on client.
+
+What if client deletes record in offline mode, how does this get synced to cloud?
+
+- Make a local attribute in client-side db called `insync`. Every record in sync with cloud has this column to be true, and locally deleted record has this column to be false.
+
+#### Algorithm
+
+1. With (C), server will find all records created later than (C), including deleted onces, these records will be sent back to client so that client is in sync with cloud.
+2. (R) are records not in sync (not local-only records). Records in DB but deleted on client side will also be included. There is a column called `insync` on client-side. When a synced record is deleted locally while offline, the insync attribute will be set to `false`. All records added in during offline will also be not `insync`. When syncing, all not `insync` records will be uploaded.
+3. When records are uploaded, they are treated separately.
+   1. Newly created records are directly added to database.
+   2. Deleted records (`deleted` attribute is `true`) will be updated in DB.
+   3. Record content is immutable.
+4. What to send back to client?
+   1. Deleted records don't have a `deletedAt` attribute on client-side, so when records are deleted, set their `deletedAt` in DB and they should be replied to client.
+   2. New records in DB created after **C** will be sent back to client.
+   3. Records deleted on server-side after **C** will have their uuids sent back. Client will find records with these uuids and update their `deleted` attribute to `true` and `deletedAt` attribute to the deletion time.
+
+
 ## Conclusion
 
 I will pick Design 3.
