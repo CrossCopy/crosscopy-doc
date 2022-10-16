@@ -209,4 +209,4 @@ The reason why I migrated to SQL is that it's super hard to deploy a MongoDB rep
 
 This project is intended to be deployable by users completely locally (at home / office), so instead of wasting time searching for a solution with MongoDB, I'd rather choose a more mature solution and go with SQL.
 
-See [Dev Env Setup](../Development/environment/index.md) for commands used to set up a seprate MySQL instance or easy setup using docker compose.
+See [Dev Env Setup](../../Development/environment/index.md) for commands used to set up a seprate MySQL instance or easy setup using docker compose.

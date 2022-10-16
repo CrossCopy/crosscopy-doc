@@ -9,12 +9,13 @@ import styles from "./index.module.css";
 import ContactForm from "../components/ContactForm";
 
 import { SnackbarProvider, VariantType, useSnackbar } from "notistack";
+import KeyboardIframe from "../components/KeyboardIframe";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
-      <div className="container">
+      <div>
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
       </div>
@@ -31,9 +32,13 @@ export default function Home(): JSX.Element {
         description="CrossCopy Documentation"
       >
         <HomepageHeader />
+        {/* <KeyboardIframe /> */}
         <main>
           <HomepageFeatures />
-          <ContactForm />
+          <div className="grid lg:grid-cols-2 md:grid-cols-1">
+            <ContactForm />
+            <KeyboardIframe />
+          </div>
         </main>
       </Layout>
     </SnackbarProvider>

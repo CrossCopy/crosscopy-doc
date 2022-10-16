@@ -8,6 +8,15 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  /* background: url("https://my.spline.design/copypastekey-65348c23b57d28da99edcc70ba9ca30a/"); */
+}
+
+.keyboardIframe {
+  /* position: absolute;
+  left: 0;
+  top: 0; */
+  /* z-index: -10; */
+  
 }
 
 @media screen and (max-width: 996px) {
@@ -21,3 +30,4 @@
   align-items: center;
   justify-content: center;
 }
+
