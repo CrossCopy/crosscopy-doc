@@ -92,10 +92,9 @@ What if client deletes record in offline mode, how does this get synced to cloud
    2. New records in DB created after **C** will be sent back to client.
    3. Records deleted on server-side after **C** will have their uuids sent back. Client will find records with these uuids and update their `deleted` attribute to `true` and `deletedAt` attribute to the deletion time.
 
-
 ## Conclusion
 
-I will pick Design 3.
+I will pick Design 4.
 
 Design 1 relies on the most basic GraphQL queries, so I don't need to implement another one, but it takes 2 rounds (requests).
 
@@ -105,27 +104,12 @@ Design 3 requires implementing an extra GraphQL request, but it's only 1 request
 
 Design 3 is a more atomic and is worth the effort.
 
+Later I designed **Design 4**. **Design 3** requires uploading all uuids of local records, it doesn't seem to be a smart idea.
+
+**Design 4** instead uploads the latest in-sync record's creation time. This is more efficient, and it's also more atomic.
+
+We just need to make sure that the local database is consistent!!! This is super important.
+
 I can still make a wrapper helper for Design 1.
 
 A periodic syncing should be run to prevent any errors. Period: 5 minutes.
-
-# SocketIO Syncing Design
-
-```mermaid
-sequenceDiagram
-    participant Client
-    participant Server
-    Client->>Server: connection: send all uuids and local-only records
-    Server->>Client: "init" event: Return records not on client-side + <br> uuid-id mapping for records uploaded to server
-    Note left of Client: Update local storage and UI<br>1. Add database id to local records identified with uuid<br>2. Add new records to local storage (sort by created time)
-    loop Long Connection Syncing
-        Client->>Server: "update" event: notify server of new record upload (upload record)
-        Server->>Client: "update" event: notify client of update (send records back to client)
-    end
-```
-
-Version 1 assumes that the app will only work when connected to server. UI is updated after server responds.
-
-The new design requires client app to work offline. The design will be similar to the regular request design above, except that this will have a long connection.
-
-A periodic syncing should be run to prevent any errors. Period: ~5 minutes.
