@@ -75,7 +75,7 @@ const config = {
       announcementBar: {
         id: "pre-alpha-warning",
         content:
-          "CrossCopy is still in pre-alpha stage and is not ready to be used. Documentation is still under development. You can read the docs to get an idea of what CrossCopy is and what it's capable of.",
+          "CrossCopy is still in alpha stage and is planned to be published by January 2023. Documentation is still under development. If you want to use this app, please subscribe to updates.",
         isCloseable: true,
       },
       metadata: [

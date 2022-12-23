@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useSnackbar } from "notistack";
 import { Button, TextField } from "@mui/material";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 const ContactForm = () => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
+  const [subscribe, setSubscribe] = useState(true);
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
   const { enqueueSnackbar } = useSnackbar();
@@ -42,8 +46,8 @@ const ContactForm = () => {
       msgs.email = "Please enter your email name";
       err = true;
     }
-    if (msg === "") {
-      msgs.msg = "Message cannot be empty";
+    if (msg === "" && !subscribe) {
+      msgs.msg = "Message cannot be empty if you don't check `Subscribe to Updates`";
       err = true;
     }
     const errorIndicators = {
@@ -58,6 +62,8 @@ const ContactForm = () => {
       setInputErrMsg(msgs);
       return;
     }
+    const tags = ["CrossCopy", "Doc"]
+    if (subscribe) tags.push("Subscribe")
     fetch("https://notification-proxy.crosscopy.io/notion", {
       method: "POST",
       mode: "no-cors",
@@ -65,7 +71,7 @@ const ContactForm = () => {
         message: msg,
         email,
         name: `${firstname} ${lastname}`,
-        tags: ["CrossCopy", "Doc"],
+        tags: tags,
       }),
     })
       .then(() => {
@@ -86,6 +92,13 @@ const ContactForm = () => {
         <div className="flex justify-center">
           <h1 className="text-5xl text-black">Leave a Message</h1>
         </div>
+        <FormGroup>
+          <FormControlLabel
+            control={<Checkbox defaultChecked onChange={(e) => setSubscribe(e.target.checked)} />}
+            label={<h2 className="mb-0">Subscribe to Updates</h2>}
+            className="text-black"
+          />
+        </FormGroup>
         <div className="grid grid-cols-2 gap-y-4 gap-x-2">
           <TextField
             id="first-name"
