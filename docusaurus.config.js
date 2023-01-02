@@ -10,6 +10,27 @@ const sectionPrefix = require("./src/remark/section-prefix");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
+  markdown: {
+    mermaid: true,
+  },
+  themes: [
+    "@docusaurus/theme-mermaid",
+    [
+      // @ts-ignore
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      // @ts-ignore
+      ({
+        // ... Your options.
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        hashed: true,
+        // For Docs using Chinese, The `language` is recommended to set to:
+        // ```
+        // language: ["en", "zh"],
+        // ```
+      }),
+    ],
+  ],
   title: "CrossCopy",
   tagline: "Cross-platform clipboard manager",
   url: "https://crosscopy.io",
@@ -41,7 +62,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/CrossCopy/crosscopy-doc/edit/develop/",
-          remarkPlugins: [require("mdx-mermaid"), math, sectionPrefix],
+          remarkPlugins: [math, sectionPrefix],
           rehypePlugins: [katex],
         },
         blog: {
@@ -49,7 +70,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/CrossCopy/crosscopy-doc/edit/develop/",
-          remarkPlugins: [require("mdx-mermaid"), math],
+          remarkPlugins: [math],
           rehypePlugins: [katex],
         },
         theme: {
