@@ -15,21 +15,21 @@ const config = {
   },
   themes: [
     "@docusaurus/theme-mermaid",
-    [
-      // @ts-ignore
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
-      // @ts-ignore
-      ({
-        // ... Your options.
-        // `hashed` is recommended as long-term-cache of index file is possible.
-        hashed: true,
-        // For Docs using Chinese, The `language` is recommended to set to:
-        // ```
-        // language: ["en", "zh"],
-        // ```
-      }),
-    ],
+    // [
+    //   // @ts-ignore
+    //   require.resolve("@easyops-cn/docusaurus-search-local"),
+    //   /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+    //   // @ts-ignore
+    //   ({
+    //     // ... Your options.
+    //     // `hashed` is recommended as long-term-cache of index file is possible.
+    //     hashed: true,
+    //     // For Docs using Chinese, The `language` is recommended to set to:
+    //     // ```
+    //     // language: ["en", "zh"],
+    //     // ```
+    //   }),
+    // ],
   ],
   title: "CrossCopy",
   tagline: "Cross-platform clipboard manager",
@@ -99,6 +99,29 @@ const config = {
           "CrossCopy is still in alpha stage and is planned to be published by January 2023. Documentation is still under development. If you want to use this app, please subscribe to updates.",
         isCloseable: true,
       },
+      algolia: {
+        // The application ID provided by Algolia
+        appId: 'BCXHBQCAW3',
+  
+        // Public API key: it is safe to commit it
+        apiKey: 'c6060582d19e25400658473d4f15b7fc',
+  
+        indexName: 'crosscopy',
+  
+        // Optional: see doc section below
+        contextualSearch: true,
+  
+        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+        // externalUrlRegex: 'external\\.com|domain\\.com',
+  
+        // Optional: Algolia search parameters
+        searchParameters: {},
+  
+        // Optional: path for search page that enabled by default (`false` to disable it)
+        searchPagePath: 'search',
+  
+        //... other Algolia params
+      },  
       metadata: [
         {
           name: "keywords",
