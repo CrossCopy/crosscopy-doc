@@ -55,10 +55,13 @@ const config = {
   presets: [
     [
       "classic",
-      // /** @type {import('@docusaurus/preset-classic').Options} */
+      /** @type {import('@docusaurus/preset-classic').Options} */
       {
         googleAnalytics: {
-          trackingID: "G-CMJZGFWKZ1"
+          trackingID: "G-CMJZGFWKZ1",
+        },
+        gtag: {
+          trackingID: "G-CMJZGFWKZ1",
         },
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
