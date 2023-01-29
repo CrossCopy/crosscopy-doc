@@ -15,9 +15,9 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.2.0",
-    "@docusaurus/preset-classic": "^2.2.0",
-    "@docusaurus/theme-mermaid": "^2.2.0",
+    "@docusaurus/core": "^2.3.0",
+    "@docusaurus/preset-classic": "^2.3.0",
+    "@docusaurus/theme-mermaid": "^2.3.0",
     "@easyops-cn/docusaurus-search-local": "^0.33.6",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
@@ -37,7 +37,7 @@
     "remark-math": "3"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^2.2.0",
+    "@docusaurus/module-type-aliases": "^2.3.0",
     "@tsconfig/docusaurus": "^1.0.5",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",
