@@ -79,3 +79,10 @@ xc listen   # start listening
 
 tmux a -t crosscopy  # attach to the session to read the logs or stop it, or restart the service.
 ```
+
+### One Liner
+
+```bash
+tmux new-session -s crosscopy -d "xc listen; tmux detach"
+tmux a -t crosscopy  # attach to the session
+```
