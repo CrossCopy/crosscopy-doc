@@ -11,9 +11,6 @@ Install the CLI with
 ```bash
 # https://www.npmjs.com/package/crosscopy
 sudo npm install -g crosscopy@latest
-# or
-# https://www.npmjs.com/package/@crosscopy/xc
-sudo npm install -g @crosscopy/xc@latest
 ```
 
 The executable binary is `xc`, `xc --help` to view available commands. More documentation will be available when the CLI is released.
