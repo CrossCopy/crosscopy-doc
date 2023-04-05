@@ -9,7 +9,7 @@ The core package has multiple components
 
 - Encryption
 - Plugin System
-  - See [Design Doc](../../Design/plugin)
+  <!-- - See [Design Doc](../../Design/plugin) -->
 - Sqlite Database Definition for Client
 - SocketIO Service
 - Common Utilities

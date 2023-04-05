@@ -11,7 +11,8 @@ Since we use Node.js runtime, you may develop on any desktop OS.
 
 Under each project, there will be more specific instructions on environment setup.
 
-To develop locally, you will need to setup some services, such as mongodb, redis, and kafka. It's quite similar to [Self-Deployment](../../Deployment/self-deploy).
+To develop locally, you will need to setup some services, such as mongodb, redis, and kafka. 
+<!-- It's quite similar to [Self-Deployment](../../Deployment/self-deploy). -->
 
 Personally I prefer to use Docker to spin up all of these services. I will provide a complete `docker-compose.yml` file in the end of this page, don't run individual docker compose file for each service.
 
